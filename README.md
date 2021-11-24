@@ -153,7 +153,7 @@ platform :ios, '9.0'
 target '你的项目名称' do
   # use_frameworks!
   # Pods for 你的项目名称
-  pod 'EasyAdsSDK', '~> 3.2.5.5' # 可指定你想要的版本号
+  pod 'EasyAdsSDK', '~> 1.0.0' # 可指定你想要的版本号
   pod 'EasyAdsSDK/CSJ', 	# 如果需要导入穿山甲SDK 如果不需要则不添加
   pod 'EasyAdsSDK/GDT', 	# 如果需要导入广点通SDK 如果不需要则不添加
   pod 'EasyAdsSDK/Mercury' # 如果需要导入MercurySDK 如果不需要则不添加
@@ -200,7 +200,7 @@ $ pod install
 指定SDK版本前，请先确保repo库为最新版本，参考上一小节内容进行更新。如果需要指定SDK版本，需要在Podfile文件中，pod那一行指定版本号：
 
 ```
-  pod 'EasyAdsSDK', '~> 3.2.5.5' # 可指定你想要的版本号
+  pod 'EasyAdsSDK', '~> 1.0.0' # 可指定你想要的版本号
   pod 'EasyAdsSDK/CSJ'
   pod 'EasyAdsSDK/GDT'
 

@@ -1,0 +1,22 @@
+use_frameworks!
+
+platform :ios, '9.0'
+source 'https://github.com/CocoaPods/Specs.git'
+target 'EasyAdsSDK_Example' do
+
+  pod 'EasyAdsSDK', :path => '../'
+  pod 'EasyAdsSDK/CSJ', :path => '../'
+  pod 'EasyAdsSDK/GDT', :path => '../'
+  pod 'EasyAdsSDK/KS', :path => '../'
+  pod 'EasyAdsSDK/BD', :path => '../'
+#  pod 'SDWebImage'
+  pod 'Masonry'
+#  pod 'GDTMobSDK', '~> 4.12.91'
+#  pod "STDebugConsole"
+#  pod 'JPFPSStatus'
+
+  target 'EasyAdsSDK_Tests' do
+    inherit! :search_paths
+    
+  end
+end

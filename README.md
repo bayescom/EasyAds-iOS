@@ -160,7 +160,71 @@ end
 
 广告位初始化的时候需要传入一个字典(NSDictionary),该字典是由json转化而来, json格式请参照Demo当中DataJson目录下的.json文件, 该json 也可以开发者的服务器自行下发, 切记格式务必严谨
 
-以下是json文件转成字典的示例代码
+### json格式示例
+```
+
+{
+  "rules": [
+    {
+      "tag": "A",
+      "sort": [
+        1,
+        3
+      ],
+      "percent": 30
+    },
+    {
+      "tag": "B",
+      "sort": [
+        2,
+        4
+      ],
+      "percent": 70
+    }
+  ],
+  "suppliers": [
+    {
+      "tag": "csj",
+      "adspotid": "887477661",
+      "appid": "5051624",
+      "index": 1
+    },
+    {
+      "tag": "ylh",
+      "adspotid": "2001447730515391",
+      "appid": "1101152570",
+      "index": 2
+    },
+    {
+      "tag": "ks",
+      "adspotid": "4000000042",
+      "appid": "90009",
+      "index": 3
+    },
+    {
+      "tag": "bd",
+      "adspotid": "2058622",
+      "appid": "e866cfb0",
+      "index": 4
+    }
+  ]
+}
+
+```
+
+### json各字段的含义
+
+| 字段名| 字段类型 |  含义 | 
+|:-------------|:-------------:|-------------|
+| tag(rules) | String | **策略组唯一标记**，用于区分标记不同组的执行情况 |
+| sort |  List  &lt;Integer&#x0003E; | **广告SDK执行顺序表**，依照组内顺序，优先级从高到低，组内成员对应suppliers字段中的index变量 |
+| percent | int | **流量占比值**，SDK内部会根据多组内配置的值，自动计算比例，执行流量百分比的分发模式，建议使用百分值。<br><br>比如上述json示例中配置的含义为：在发起请求后，有30%的概率执行策略组A中配置，按照1->3的顺序依次执行广告加载；70%的概率执行策略组A中配置，按照2->4的顺序依次执行广告加载。<br><br>如果A、B两组中percent配置值分别为201、799，代表20.1%的概率执行A，79.9%的概率执行B。<br><br>如果A、B两组中percent配置值分别为2、3，代表40%的概率执行A，60%的概率执行B。 <br><br>如果仅有一组A，不论percent按照多少设置，都默认100%的流量执行A|
+| index | int | **渠道唯一标识**，用来和rules信息内sort字段关联，确定广告执行顺序 |
+| tag | String | **SDK类别标识**，<br>"csj"代表头条-穿山甲SDK<br>"ylh"代表腾讯-优量汇SDK（前广点通）<br>"ks"代表快手-快手联盟SDK<br>"bd"代表百度-百青藤SDK |
+| adspotId | String | 广告位id，在变现SDK后台申请到的具体广告位id |
+| appId | String | 应用id，在变现SDK后台申请到的应用id |
+
+### json文件转成NSDictionary的示例代码
 
 ```
 - (NSDictionary *)loadAdDataWithJsonName:(NSString *)jsonName {

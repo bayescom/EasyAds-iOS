@@ -28,8 +28,8 @@
         _supplier = supplier;
         _bd_ad = [[BaiduMobAdRewardVideo alloc] init];
         _bd_ad.delegate = self;
-        _bd_ad.AdUnitTag = _supplier.adspotid;
-        _bd_ad.publisherId = _supplier.appid;
+        _bd_ad.AdUnitTag = _supplier.adspotId;
+        _bd_ad.publisherId = _supplier.appId;
     }
     return self;
 }

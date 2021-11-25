@@ -35,7 +35,7 @@
     _bd_ad = [[BaiduMobAdView alloc] init];
     _bd_ad.AdType = BaiduMobAdViewTypeBanner;
     _bd_ad.delegate = self;
-    _bd_ad.AdUnitTag = _supplier.adspotid;
+    _bd_ad.AdUnitTag = _supplier.adspotId;
     _bd_ad.frame = rect;
     [_adspot.adContainer addSubview:_bd_ad];
     [_bd_ad start];
@@ -43,7 +43,7 @@
 }
 
 - (NSString *)publisherId {
-    return  _supplier.appid; //@"your_own_app_id";
+    return  _supplier.appId; //@"your_own_app_id";
 }
 
 - (void)willDisplayAd:(BaiduMobAdView *)adview {

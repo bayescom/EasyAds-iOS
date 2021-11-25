@@ -39,7 +39,7 @@
         _adspot = adspot;
         _supplier = supplier;
         _leftTime = 5;  // 默认5s
-        _ks_ad = [[KSSplashAdView alloc] initWithPosId:_supplier.adspotid];
+        _ks_ad = [[KSSplashAdView alloc] initWithPosId:_supplier.adspotId];
     }
     return self;
 }

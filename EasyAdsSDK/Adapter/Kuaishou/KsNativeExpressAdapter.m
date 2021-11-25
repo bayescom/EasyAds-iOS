@@ -32,7 +32,7 @@
         _adspot = adspot;
         _supplier = supplier;
         
-        _ks_ad = [[KSFeedAdsManager alloc] initWithPosId:_supplier.adspotid size:_adspot.adSize];
+        _ks_ad = [[KSFeedAdsManager alloc] initWithPosId:_supplier.adspotId size:_adspot.adSize];
     }
     return self;
 }

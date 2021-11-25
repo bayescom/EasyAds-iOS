@@ -30,7 +30,7 @@
     if (self = [super initWithSupplier:supplier adspot:adspot]) {
         _adspot = (EasyAdInterstitial *)adspot;
         _supplier = supplier;
-        _csj_ad = [[BUNativeExpressInterstitialAd alloc] initWithSlotID:_supplier.adspotid adSize:CGSizeMake(300, 450)];
+        _csj_ad = [[BUNativeExpressInterstitialAd alloc] initWithSlotID:_supplier.adspotId adSize:CGSizeMake(300, 450)];
     }
     return self;
 }

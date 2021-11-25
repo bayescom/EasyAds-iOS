@@ -34,7 +34,7 @@
 }
 
 - (void)loadAd {
-    _csj_ad = [[BUNativeExpressBannerView alloc] initWithSlotID:_supplier.adspotid rootViewController:_adspot.viewController adSize:_adspot.adContainer.bounds.size interval:_adspot.refreshInterval];
+    _csj_ad = [[BUNativeExpressBannerView alloc] initWithSlotID:_supplier.adspotId rootViewController:_adspot.viewController adSize:_adspot.adContainer.bounds.size interval:_adspot.refreshInterval];
     _csj_ad.frame = _adspot.adContainer.bounds;
     _csj_ad.delegate = self;
     [_adspot.adContainer addSubview:_csj_ad];

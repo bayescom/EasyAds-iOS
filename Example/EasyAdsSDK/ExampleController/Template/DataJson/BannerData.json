@@ -14,20 +14,20 @@
     "suppliers": [
         {
             "tag": "gdt",
-            "adspotid": "1080958885885321",
-            "appid": "1105344611",
+            "adspotId": "1080958885885321",
+            "appId": "1105344611",
             "index": 1
         },
         {
             "tag": "csj",
-            "adspotid": "946985487",
-            "appid": "5230559",
+            "adspotId": "946985487",
+            "appId": "5230559",
             "index": 2
         },
         {
             "tag": "bd",
-            "adspotid": "3722709",
-            "appid": "ccb60059",
+            "adspotId": "3722709",
+            "appId": "ccb60059",
             "index": 3
         }
     ],

@@ -36,7 +36,7 @@
         _adspot = adspot;
         _supplier = supplier;
         _leftTime = 5;  // 默认5s
-        _gdt_ad = [[GDTSplashAd alloc] initWithPlacementId:_supplier.adspotid];
+        _gdt_ad = [[GDTSplashAd alloc] initWithPlacementId:_supplier.adspotId];
     }
     return self;
 }
@@ -115,7 +115,7 @@
     [self.adspot reportWithType:EasyAdSdkSupplierRepoFaileded supplier:_supplier error:error];
 
 //    if ([self.delegate respondsToSelector:@selector(EasyAdSplashOnAdFailedWithSdkId:error:)]) {
-//        [self.delegate EasyAdSplashOnAdFailedWithSdkId:_adspot.adspotid error:error];
+//        [self.delegate EasyAdSplashOnAdFailedWithSdkId:_adspot.adspotId error:error];
 //    }
 }
 

@@ -29,7 +29,7 @@
         _adspot = (EasyAdInterstitial *)adspot;
         _supplier = supplier;
         
-        _csj_ad = [[BUNativeExpressFullscreenVideoAd alloc] initWithSlotID:_supplier.adspotid];
+        _csj_ad = [[BUNativeExpressFullscreenVideoAd alloc] initWithSlotID:_supplier.adspotId];
     }
     return self;
 }

@@ -28,7 +28,7 @@
     if (self = [super initWithSupplier:supplier adspot:adspot]) {
         _adspot = adspot;
         _supplier = supplier;
-        _gdt_ad = [[GDTRewardVideoAd alloc] initWithPlacementId:_supplier.adspotid];
+        _gdt_ad = [[GDTRewardVideoAd alloc] initWithPlacementId:_supplier.adspotId];
     }
     return self;
 }

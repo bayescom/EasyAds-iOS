@@ -30,7 +30,7 @@
         _adspot = adspot;
         _supplier = supplier;
         _isDidLoad = NO;
-        _ks_ad = [[KSInterstitialAd alloc] initWithPosId:_supplier.adspotid containerSize:_adspot.viewController.navigationController.view.bounds.size];
+        _ks_ad = [[KSInterstitialAd alloc] initWithPosId:_supplier.adspotId containerSize:_adspot.viewController.navigationController.view.bounds.size];
     }
     return self;
 }

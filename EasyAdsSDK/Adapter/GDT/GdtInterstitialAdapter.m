@@ -30,7 +30,7 @@
     if (self = [super initWithSupplier:supplier adspot:adspot]) {
         _adspot = (EasyAdInterstitial *)adspot;
         _supplier = supplier;
-        _gdt_ad = [[GDTUnifiedInterstitialAd alloc] initWithPlacementId:_supplier.adspotid];
+        _gdt_ad = [[GDTUnifiedInterstitialAd alloc] initWithPlacementId:_supplier.adspotId];
     }
     return self;
 }

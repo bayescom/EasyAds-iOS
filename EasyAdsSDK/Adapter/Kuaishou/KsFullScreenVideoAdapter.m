@@ -28,7 +28,7 @@
     if (self = [super initWithSupplier:supplier adspot:adspot]) {
         _adspot = adspot;
         _supplier = supplier;
-        _ks_ad = [[KSFullscreenVideoAd alloc] initWithPosId:_supplier.adspotid];
+        _ks_ad = [[KSFullscreenVideoAd alloc] initWithPosId:_supplier.adspotId];
         _ks_ad.showDirection = KSAdShowDirection_Vertical;
     }
     return self;

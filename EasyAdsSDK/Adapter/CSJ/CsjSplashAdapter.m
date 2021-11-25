@@ -38,7 +38,7 @@
             CGFloat real_h = _adspot.logoImage.size.height*(real_w/_adspot.logoImage.size.width);
             adFrame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-real_h);
         }
-        _csj_ad = [[BUSplashAdView alloc] initWithSlotID:_supplier.adspotid frame:adFrame];
+        _csj_ad = [[BUSplashAdView alloc] initWithSlotID:_supplier.adspotId frame:adFrame];
     }
     return self;
 }

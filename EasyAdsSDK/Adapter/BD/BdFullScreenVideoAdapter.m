@@ -30,8 +30,8 @@
         _supplier = supplier;
         _bd_ad = [[BaiduMobAdExpressFullScreenVideo alloc] init];
         _bd_ad.delegate = self;
-        _bd_ad.AdUnitTag = _supplier.adspotid;
-        _bd_ad.publisherId = _supplier.appid;
+        _bd_ad.AdUnitTag = _supplier.adspotId;
+        _bd_ad.publisherId = _supplier.appId;
         _bd_ad.adType = BaiduMobAdTypeFullScreenVideo;
     }
     return self;

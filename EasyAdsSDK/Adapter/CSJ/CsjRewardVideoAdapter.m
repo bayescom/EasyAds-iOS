@@ -37,7 +37,7 @@
         _supplier = supplier;
         BURewardedVideoModel *model = [[BURewardedVideoModel alloc] init];
         [model setUserId:@"playable"];
-        _csj_ad = [[BUNativeExpressRewardedVideoAd alloc] initWithSlotID:_supplier.adspotid rewardedVideoModel:model];
+        _csj_ad = [[BUNativeExpressRewardedVideoAd alloc] initWithSlotID:_supplier.adspotId rewardedVideoModel:model];
     }
     return self;
 }

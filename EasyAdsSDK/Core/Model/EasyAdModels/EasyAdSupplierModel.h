@@ -44,8 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface EasyAdSupplier : NSObject
-@property (nonatomic, copy)   NSString *appid;
-@property (nonatomic, copy)   NSString *adspotid;
+@property (nonatomic, copy)   NSString *appId;
+@property (nonatomic, copy)   NSString *adspotId;
 @property (nonatomic, copy)   NSString *tag;
 @property (nonatomic, strong)   NSNumber *index;
 

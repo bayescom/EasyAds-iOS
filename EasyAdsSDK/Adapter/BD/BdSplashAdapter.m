@@ -38,7 +38,7 @@
         _supplier = supplier;
         _leftTime = 5;  // 默认5s
         _bd_ad = [[BaiduMobAdSplash alloc] init];
-        _bd_ad.AdUnitTag = supplier.adspotid;
+        _bd_ad.AdUnitTag = supplier.adspotId;
     }
     return self;
 }
@@ -113,7 +113,7 @@
 
 
 - (NSString *)publisherId {
-    return _supplier.appid;
+    return _supplier.appId;
 }
 
 - (void)splashDidDismissLp:(BaiduMobAdSplash *)splash {

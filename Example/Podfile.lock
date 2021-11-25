@@ -7,24 +7,24 @@ PODS:
   - Ads-CN/BUFoundation (4.0.0.5)
   - Ads-CN/Domestic (4.0.0.5)
   - BaiduMobAdSDK (4.83)
-  - EasyAdsSDK (3.2.5.5):
-    - EasyAdsSDK/Core (= 3.2.5.5)
-  - EasyAdsSDK/Adspot (3.2.5.5):
+  - EasyAdsSDK (1.0.0):
+    - EasyAdsSDK/Core (= 1.0.0)
+  - EasyAdsSDK/Adspot (1.0.0):
     - EasyAdsSDK/Core
-  - EasyAdsSDK/BD (3.2.5.5):
+  - EasyAdsSDK/BD (1.0.0):
     - BaiduMobAdSDK
     - EasyAdsSDK/Adspot
     - EasyAdsSDK/Core
-  - EasyAdsSDK/Core (3.2.5.5)
-  - EasyAdsSDK/CSJ (3.2.5.5):
+  - EasyAdsSDK/Core (1.0.0)
+  - EasyAdsSDK/CSJ (1.0.0):
     - Ads-CN
     - EasyAdsSDK/Adspot
     - EasyAdsSDK/Core
-  - EasyAdsSDK/GDT (3.2.5.5):
+  - EasyAdsSDK/GDT (1.0.0):
     - EasyAdsSDK/Adspot
     - EasyAdsSDK/Core
     - GDTMobSDK
-  - EasyAdsSDK/KS (3.2.5.5):
+  - EasyAdsSDK/KS (1.0.0):
     - EasyAdsSDK/Adspot
     - EasyAdsSDK/Core
     - KSAdSDK
@@ -57,7 +57,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Ads-CN: 85c20c8e557b01f30bd0e1cb68244b90b061a8d5
   BaiduMobAdSDK: d3006333637dacac0ef9808655a686e18019f033
-  EasyAdsSDK: f63bfa83fce8672d7706816ae127f103d1b3669f
+  EasyAdsSDK: d67d28ebee41f9c6359e3b7a4a436046ea7aa890
   GDTMobSDK: 3d36a2c7c606b1e5255442fcd609b09f322ca016
   KSAdSDK: 21a9cac9f2b9d81dc38eca078950d006775e83ff
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201

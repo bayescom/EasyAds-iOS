@@ -14,26 +14,26 @@
     "suppliers": [
         {
             "tag": "gdt",
-            "adspotid": "9041576832414785",
-            "appid": "1105344611",
+            "adspotId": "9041576832414785",
+            "appId": "1105344611",
             "index": 1
         },
         {
             "tag": "csj",
-            "adspotid": "946985536",
-            "appid": "5230559",
+            "adspotId": "946985536",
+            "appId": "5230559",
             "index": 2
         },
         {
             "tag": "bd",
-            "adspotid": "7339863",
-            "appid": "ccb60059",
+            "adspotId": "7339863",
+            "appId": "ccb60059",
             "index": 3
         },
         {
             "tag": "ks",
-            "adspotid": "90010002",
-            "appid": "90010",
+            "adspotId": "90010002",
+            "appId": "90010",
             "index": 4
         }
 

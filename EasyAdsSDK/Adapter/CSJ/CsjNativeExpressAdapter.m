@@ -32,7 +32,7 @@
         _supplier = supplier;
         
         BUAdSlot *slot = [[BUAdSlot alloc] init];
-        slot.ID = _supplier.adspotid;
+        slot.ID = _supplier.adspotId;
         slot.AdType = BUAdSlotAdTypeFeed;
         slot.position = BUAdSlotPositionFeed;
         slot.imgSize = [BUSize sizeBy:BUProposalSize_Feed228_150];

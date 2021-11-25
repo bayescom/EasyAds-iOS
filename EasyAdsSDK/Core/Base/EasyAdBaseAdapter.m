@@ -126,19 +126,19 @@
         // 广点通SDK
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            [NSClassFromString(clsName) performSelector:@selector(registerAppId:) withObject:supplier.appid];
+            [NSClassFromString(clsName) performSelector:@selector(registerAppId:) withObject:supplier.appId];
         });
     } else if ([supplier.tag isEqualToString:SDK_TAG_CSJ]) {
         // 穿山甲SDK
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            [NSClassFromString(clsName) performSelector:@selector(setAppID:) withObject:supplier.appid];
+            [NSClassFromString(clsName) performSelector:@selector(setAppID:) withObject:supplier.appId];
         });
     } else if ([supplier.tag isEqualToString:SDK_TAG_KS]) {
         // 快手
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            [NSClassFromString(clsName) performSelector:@selector(setAppId:) withObject:supplier.appid];
+            [NSClassFromString(clsName) performSelector:@selector(setAppId:) withObject:supplier.appId];
         });
 
     } else if ([supplier.tag isEqualToString:SDK_TAG_BAIDU]) {

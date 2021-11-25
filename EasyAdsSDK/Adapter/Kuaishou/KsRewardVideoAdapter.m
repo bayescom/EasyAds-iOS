@@ -29,7 +29,7 @@
         _adspot = adspot;
         _supplier = supplier;
         KSRewardedVideoModel *model = [KSRewardedVideoModel new];
-        _ks_ad = [[KSRewardedVideoAd alloc] initWithPosId:supplier.adspotid rewardedVideoModel:model];
+        _ks_ad = [[KSRewardedVideoAd alloc] initWithPosId:supplier.adspotId rewardedVideoModel:model];
         _ks_ad.showDirection = KSAdShowDirection_Vertical;
     }
     return self;

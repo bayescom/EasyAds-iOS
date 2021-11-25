@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
         csj.dependency 'EasyAdsSDK/Core'
         csj.dependency 'EasyAdsSDK/Adspot'
         csj.dependency 'Ads-CN'
-        csj.source_files = 'EasyAdsSDK/Adapter/csj/**/*.{h,m}'
+        csj.source_files = 'EasyAdsSDK/Adapter/CSJ/**/*.{h,m}'
         csj.frameworks = 'UIKit', 'MapKit', 'WebKit', 'MediaPlayer', 'CoreLocation', 'AdSupport', 'CoreMedia', 'AVFoundation', 'CoreTelephony', 'StoreKit', 'SystemConfiguration', 'MobileCoreServices', 'CoreMotion', 'Accelerate','AudioToolbox','JavaScriptCore','Security','CoreImage','AudioToolbox','ImageIO','QuartzCore','CoreGraphics','CoreText'
         csj.libraries = 'c++', 'resolv', 'z', 'sqlite3', 'bz2', 'xml2', 'iconv', 'c++abi'
         #    valid_archs = ['armv7', 'i386', 'x86_64', 'arm64']
@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
         gdt.dependency 'EasyAdsSDK/Core'
         gdt.dependency 'EasyAdsSDK/Adspot'
         gdt.dependency 'GDTMobSDK'
-        gdt.source_files =  'EasyAdsSDK/Adapter/gdt/**/*.{h,m}'
+        gdt.source_files =  'EasyAdsSDK/Adapter/GDT/**/*.{h,m}'
         gdt.frameworks = 'AdSupport', 'CoreLocation', 'QuartzCore', 'SystemConfiguration', 'CoreTelephony', 'Security', 'StoreKit', 'AVFoundation', 'WebKit'
         gdt.libraries     = 'xml2', 'z'
     end
@@ -83,7 +83,7 @@ Pod::Spec.new do |s|
         bd.dependency 'EasyAdsSDK/Core'
         bd.dependency 'EasyAdsSDK/Adspot'
         bd.dependency 'BaiduMobAdSDK'
-        bd.source_files =  'EasyAdsSDK/Adapter/bd/**/*.{h,m}'
+        bd.source_files =  'EasyAdsSDK/Adapter/BD/**/*.{h,m}'
         bd.frameworks = 'CoreLocation', 'SystemConfiguration', 'CoreGraphics', 'CoreMotion', 'CoreTelephony', 'AdSupport', 'SystemConfiguration', 'QuartzCore', 'WebKit', 'MessageUI','SafariServices','AVFoundation','EventKit','QuartzCore','CoreMedia','StoreKit'
         bd.libraries     = 'c++'
         bd.weak_frameworks = "WebKit"

@@ -36,8 +36,8 @@
         _supplier = supplier;
         _bd_ad = [[BaiduMobAdNative alloc] init];
         _bd_ad.delegate = self;
-        _bd_ad.publisherId = _supplier.appid;
-        _bd_ad.adId = _supplier.adspotid;
+        _bd_ad.publisherId = _supplier.appId;
+        _bd_ad.adId = _supplier.adspotId;
         _bd_ad.presentAdViewController = _adspot.viewController;
     }
     return self;

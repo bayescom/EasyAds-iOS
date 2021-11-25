@@ -7,8 +7,6 @@
 //
 
 #import "DemoBannerViewController.h"
-#import "ViewBuilder.h"
-#import "EasyAdSdkConfig.h"
 #import <EasyAdsSDK/EasyAdBanner.h>
 #import "AdDataJsonManager.h"
 @interface DemoBannerViewController () <EasyAdBannerDelegate>

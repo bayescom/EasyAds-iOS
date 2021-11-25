@@ -10,10 +10,6 @@
 #import "CellBuilder.h"
 #import "BYExamCellModel.h"
 
-#import <objc/runtime.h>
-#import <objc/message.h>
-
-#import "DemoUtils.h"
 #import <EasyAdsSDK/EasyAdNativeExpress.h>
 #import <EasyAdsSDK/EasyAdNativeExpressView.h>
 #import "AdDataJsonManager.h"

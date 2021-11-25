@@ -7,8 +7,6 @@
 //
 
 #import "DemoInterstitialViewController.h"
-#import "DemoUtils.h"
-
 #import <EasyAdsSDK/EasyAdInterstitial.h>
 #import "AdDataJsonManager.h"
 @interface DemoInterstitialViewController () <EasyAdInterstitialDelegate>

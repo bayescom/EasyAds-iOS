@@ -66,7 +66,4 @@ static EasyAdSdkConfig *instance = nil;
     _level = level;
 }
 
-//- (void)setCaidConfig:(NSDictionary *)caidConfig {
-//    _caidConfig = caidConfig;
-//}
 @end

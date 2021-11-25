@@ -5,12 +5,10 @@
 ```objective-c
 
 #import "DemoBannerViewController.h"
-#import "ViewBuilder.h"
-
-#import <AdvanceSDK/AdvanceBanner.h>
-
-@interface DemoBannerViewController () <AdvanceBannerDelegate>
-@property (nonatomic, strong) AdvanceBanner *advanceBanner;
+#import <EasyAdsSDK/EasyAdBanner.h>
+#import "AdDataJsonManager.h"
+@interface DemoBannerViewController () <EasyAdBannerDelegate>
+@property (nonatomic, strong) EasyAdBanner *EasyAdBanner;
 @property (nonatomic, strong) UIView *contentV;
 
 @end
@@ -19,64 +17,86 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.initDefSubviewsFlag = YES;
-    self.adspotIdsArr = @[
-        @{@"addesc": @"Banner", @"adspotId": @"10033-200031"},
-    ];
-    self.btn1Title = @"加载并显示广告";
+    self.title = @"Banner";
+    self.dic = [[AdDataJsonManager shared] loadAdDataWithType:JsonDataType_banner];
+
+    self.isOnlyLoad = NO;
 }
 
-- (void)loadAdBtn1Action {
-    if (![self checkAdspotId]) { return; }
+- (void)loadAndShowAd{
+    [super loadAndShowAd];
     if (!_contentV) {
-        _contentV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width/6.4)];
+        _contentV = [[UIView alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, self.view.bounds.size.width *5/32)];
+        [self.view addSubview:self.contentV];
     }
-    [self.adShowView addSubview:self.contentV];
-    self.adShowView.hidden = NO;
     
-    self.advanceBanner = [[AdvanceBanner alloc] initWithMediaId:self.mediaId adspotId:self.adspotId adContainer:self.contentV viewController:self];
-    self.advanceBanner.delegate = self;
-    [self.advanceBanner loadAd];
+
+    [self loadAdWithState:AdState_Normal];
+
+    self.EasyAdBanner = [[EasyAdBanner alloc] initWithJsonDic:self.dic adContainer:_contentV viewController:self];
+    self.EasyAdBanner.delegate = self;
+    [self.EasyAdBanner loadAndShowAd];
+    
+    [self loadAdWithState:AdState_Loading];
 }
 
-// MARK: ======================= AdvanceBannerDelegate =======================
+- (void)deallocAd {
+    self.contentV = nil;
+    self.EasyAdBanner = nil;
+    self.EasyAdBanner.delegate = nil;
+}
+
+// MARK: ======================= EasyAdBannerDelegate =======================
 /// 广告数据拉取成功回调
-- (void)advanceUnifiedViewDidLoad {
+- (void)easyAdUnifiedViewDidLoad {
     NSLog(@"广告数据拉取成功 %s", __func__);
+    [self showProcessWithText:[NSString stringWithFormat:@"%s\r\n 广告拉取成功", __func__]];
+    [self loadAdWithState:AdState_LoadSucceed];
 }
 
 /// 广告加载失败
-- (void)advanceFailedWithError:(NSError *)error {
-    NSLog(@"广告展示失败 %s  error: %@", __func__, error);
+- (void)easyAdFailedWithError:(NSError *)error description:(NSDictionary *)description{
+    NSLog(@"广告展示失败 %s  error: %@ 详情:%@", __func__, error, description);
+    [self showProcessWithText:[NSString stringWithFormat:@"%s\r\n 广告加载失败", __func__]];
+    [self showErrorWithDescription:description];
+    [self loadAdWithState:AdState_LoadFailed];
+    [self deallocAd];
+
 
 }
 
 /// 内部渠道开始加载时调用
-- (void)advanceSupplierWillLoad:(NSString *)supplierId {
+- (void)easyAdSupplierWillLoad:(NSString *)supplierId {
     NSLog(@"内部渠道开始加载 %s  supplierId: %@", __func__, supplierId);
+    [self showProcessWithText:[NSString stringWithFormat:@"%s\r\n 内部渠道开始加载时调用", __func__]];
 
 }
 
 /// 广告曝光
-- (void)advanceExposured {
+- (void)easyAdExposured {
     NSLog(@"广告曝光回调 %s", __func__);
+    [self showProcessWithText:[NSString stringWithFormat:@"%s\r\n 广告曝光成功", __func__]];
 }
 
 /// 广告点击
-- (void)advanceClicked {
+- (void)easyAdClicked {
     NSLog(@"广告点击 %s", __func__);
+    [self showProcessWithText:[NSString stringWithFormat:@"%s\r\n 广告点击", __func__]];
 }
 
 /// 广告关闭回调
-- (void)advanceDidClose {
+- (void)easyAdDidClose {
     NSLog(@"广告关闭了 %s", __func__);
+    [self showProcessWithText:[NSString stringWithFormat:@"%s\r\n 广告关闭了", __func__]];
+
 }
 
-/// 策略请求成功
-- (void)advanceOnAdReceived:(NSString *)reqId {
-    NSLog(@"%s 策略id为: %@",__func__ , reqId);
+- (void)easyAdSuccessSortTag:(NSString *)sortTag {
+    NSLog(@"选中了 rule '%@' %s", sortTag,__func__);
+    [self showProcessWithText:[NSString stringWithFormat:@"%s\r\n 选中了 rule '%@' ", __func__, sortTag]];
 }
+
+
 @end
 
 ```

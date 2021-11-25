@@ -7,7 +7,6 @@
 //
 
 #import "DemoRewardVideoViewController.h"
-#import "DemoUtils.h"
 
 #import <EasyAdsSDK/EasyAdRewardVideo.h>
 #import "AdDataJsonManager.h"

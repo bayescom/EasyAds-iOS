@@ -7,9 +7,6 @@
 //
 
 #import "DemoSplashViewController.h"
-
-#import "DemoUtils.h"
-
 #import <EasyAdsSDK/EasyAdSplash.h>
 #import "AdDataJsonManager.h"
 @interface DemoSplashViewController () <EasyAdSplashDelegate>

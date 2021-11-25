@@ -7,10 +7,7 @@
 //
 
 #import "DemoFullScreenVideoController.h"
-#import "DemoUtils.h"
-
 #import <EasyAdsSDK/EasyAdFullScreenVideo.h>
-
 #import "AdDataJsonManager.h"
 @interface DemoFullScreenVideoController () <EasyAdFullScreenVideoDelegate>
 @property (nonatomic, strong) EasyAdFullScreenVideo *EasyAdFullScreenVideo;

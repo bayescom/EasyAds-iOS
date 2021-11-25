@@ -17,7 +17,7 @@
 NSString *const AdvanceSdkVersion = @"1.0.0";
 
 
-NSString *const SDK_TAG_GDT=@"gdt";
+NSString *const SDK_TAG_GDT=@"ylh";
 NSString *const SDK_TAG_CSJ=@"csj";
 NSString *const SDK_TAG_KS =@"ks";
 NSString *const SDK_TAG_BAIDU=@"bd";

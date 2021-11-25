@@ -145,7 +145,7 @@ end
 [EasyAdSdkConfig sdkVersion];
 ```
 
-##### 目前EasyAdsSDK支持统一管理的广告位类型为：
+### EasyAdsSDK支持统一管理的广告位类型为：
 
 - [开屏广告位(Splash)](./_docs/ads/splash_ad.md)
 - [横幅广告位(Banner)](./_docs/ads/banner_ad.md)
@@ -156,7 +156,28 @@ end
 
 
 
-### 全局初始化设置
+## **广告位初始化设置**
+
+广告位初始化的时候需要传入一个字典(NSDictionary),该字典是由json转化而来, json格式请参照Demo当中DataJson目录下的.json文件, 该json 也可以开发者的服务器自行下发, 切记格式务必严谨
+
+以下是json文件转成字典的示例代码
+
+```
+- (NSDictionary *)loadAdDataWithJsonName:(NSString *)jsonName {
+    if (!jsonName) {
+        return nil;
+    }
+    
+    @try {
+        NSString *path = [[NSBundle mainBundle] pathForResource:jsonName ofType:@"json"];
+        NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+        
+        return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+
+    } @catch (NSException *exception) {}
+}
+
+```  
 
 聚合SDK要正确工作需要各个SDK在app启动时正确初始化，具体各个SDK的设置方式不尽相同，请参考各个SDK的文档。
 

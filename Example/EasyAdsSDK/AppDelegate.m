@@ -78,9 +78,4 @@
 
 }
 
-/**
-ensure 保证 确保  insurance 保险 保障措施 保险费 surplus 过剩英语过于  evade 逃避 脱逃 规避  elaborate 精心设计 复杂的 efficient 效率高的  efficiency 效率 效能  effective 有效的 生效的 实际的
- exist 存在 生存 existence 存在生活  explore 勘探 探索  examine 调查 仔细检查   exaggrate 夸大  exert 施加 运用 努力  expand 扩大 扩展 expansion 扩涨 发展 prime 首要的 优质的 primary 主要的 首要的 最初的 primitive 原始的 低等的 落后的  priority 优先级  simulate 刺激 激发 鼓励 distinction instinction 本能直觉  dominate dominant 占支配地位 占优势的  demestic 国内的 家庭的  gene 基因 general 普遍的 总的 普通的  generation 生产 一代人 generous
- */
-
 @end

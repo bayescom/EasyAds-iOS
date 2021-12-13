@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
     s.homepage         = 'http://www.bayescom.com/'
     
     s.author           = { 'bayescom' => 'http://www.bayescom.com/' }
-    s.source           = { :git => 'https://github.com/bayescom/EasyAdsSDK.git', :tag => s.version.to_s }
+    s.source           = { :git => 'https://github.com/bayescom/EasyAds-iOS.git', :tag => s.version.to_s }
     
     s.user_target_xcconfig = {'OTHER_LDFLAGS' => ['-ObjC']}
     

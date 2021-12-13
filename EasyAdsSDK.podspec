@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.summary          = 'bayescom iOS AdvabceSDK'
     s.description      = <<-DESC
-    Blink倍联——免费透明的流量变现神器 
+    欢迎大家使用EasyAdsSDK, EasyAdsSDK旨在帮助一些中小型App开发团队快速而高效的集成市面上主流的广告SDK
     600+ 移动媒体选择的广告商业化管理工具，定制私有的移动媒体商业化解决方案。优质上游资源一网打尽，接入方式快速透明稳定。支持流量分发、渠道策略、精准投放、数据报表、排期管理、广告审核等全流程业务场景。
     DESC
     

@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
     s.name             = 'EasyAdsSDK'
     
-    s.version          = '1.0.0'
+    s.version          = '1.0.1'
     s.ios.deployment_target = '9.0'
     s.platform     = :ios, "9.0"
     s.requires_arc = true
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
     s.homepage         = 'http://www.bayescom.com/'
     
     s.author           = { 'bayescom' => 'http://www.bayescom.com/' }
-    s.source           = { :git => 'https://github.com/bayescom/EasyAds-iOS', :tag => s.version.to_s }
+    s.source           = { :git => 'https://github.com/bayescom/EasyAds-iOS.git', :tag => s.version.to_s }
     
     s.user_target_xcconfig = {'OTHER_LDFLAGS' => ['-ObjC']}
     

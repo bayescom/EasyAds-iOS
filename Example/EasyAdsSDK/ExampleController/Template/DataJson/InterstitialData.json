@@ -1,0 +1,34 @@
+{
+    "rules":[
+        {
+            "tag": "A",
+            "sort": [1, 2, 3, 4],
+            "percent": 70
+        },
+        {
+            "tag": "B",
+            "sort": [4, 3, 2, 1],
+            "percent": 30
+        }
+    ],
+    "suppliers": [
+        {
+            "tag": "ylh",
+            "adspotId": "1050652855580392",
+            "appId": "1105344611",
+            "index": 1
+        },
+        {
+            "tag": "csj",
+            "adspotId": "946985544",
+            "appId": "5230559",
+            "index": 2
+        },
+        {
+            "tag": "ks",
+            "adspotId": "4000000277",
+            "appId": "90010",
+            "index": 4
+        }
+    ],
+}

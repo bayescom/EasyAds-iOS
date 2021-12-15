@@ -1,0 +1,41 @@
+{
+    "rules":[
+        {
+            "tag": "A",
+            "sort": [1, 2, 3, 4],
+            "percent": 30
+        },
+        {
+            "tag": "B",
+            "sort": [4, 3, 2, 1],
+            "percent": 50
+        },
+
+    ],
+    "suppliers": [
+        {
+            "tag": "ylh",
+            "adspotId": "9040714184494018",
+            "appId": "1105344611",
+            "index": 1
+        },
+        {
+            "tag": "csj",
+            "adspotId": "887608193",
+            "appId": "5230559",
+            "index": 2
+        },
+        {
+            "tag": "bd",
+            "adspotId": "2058492",
+            "appId": "ccb60059",
+            "index": 3
+        },
+        {
+            "tag": "ks",
+            "adspotId": "4000000041",
+            "appId": "90010",
+            "index": 4
+        }
+    ],
+}

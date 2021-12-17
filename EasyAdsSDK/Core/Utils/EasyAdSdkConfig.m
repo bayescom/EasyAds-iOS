@@ -14,7 +14,7 @@
 @end
 
 @implementation EasyAdSdkConfig
-NSString *const AdvanceSdkVersion = @"1.0.2";
+NSString *const AdvanceSdkVersion = @"1.0.1";
 
 
 NSString *const SDK_TAG_GDT=@"ylh";

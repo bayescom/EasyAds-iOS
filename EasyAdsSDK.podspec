@@ -1,21 +1,21 @@
 #
-# Be sure to run `pod lib lint EasyAdsSDK.podspec' to ensure this is a
-# valid spec before submitting.
+#  Be sure to run `pod spec lint EasyAdsSDK.podspec' to ensure this is a
+#  valid spec and to remove all comments including this before submitting the spec.
 #
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
+#  To learn more about Podspec attributes see https://guides.cocoapods.org/syntax/podspec.html
+#  To see working Podspecs in the CocoaPods repo see https://github.com/CocoaPods/Specs/
 #
 
 Pod::Spec.new do |s|
     s.name             = 'EasyAdsSDK'
     
-    s.version          = '1.0.1'
+    s.version          = '1.0.2'
     s.ios.deployment_target = '9.0'
     s.platform     = :ios, "9.0"
     s.requires_arc = true
     
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
-    s.summary          = 'bayescom iOS AdvabceSDK'
+    s.summary          = 'bayescom iOS EasyAdsSDK'
     s.description      = <<-DESC
     欢迎大家使用EasyAdsSDK, EasyAdsSDK旨在帮助一些中小型App开发团队快速而高效的集成市面上主流的广告SDK
     600+ 移动媒体选择的广告商业化管理工具，定制私有的移动媒体商业化解决方案。优质上游资源一网打尽，接入方式快速透明稳定。支持流量分发、渠道策略、精准投放、数据报表、排期管理、广告审核等全流程业务场景。

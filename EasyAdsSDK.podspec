@@ -54,6 +54,7 @@ Pod::Spec.new do |s|
         csj.dependency 'EasyAdsSDK/Core'
         csj.dependency 'EasyAdsSDK/Adspot'
         csj.dependency 'Ads-CN'
+        csj.dependency 'Ads-CN' ,'4.9.0.6'
         csj.source_files = 'EasyAdsSDK/Adapter/CSJ/**/*.{h,m}'
         csj.frameworks = 'UIKit', 'MapKit', 'WebKit', 'MediaPlayer', 'CoreLocation', 'AdSupport', 'CoreMedia', 'AVFoundation', 'CoreTelephony', 'StoreKit', 'SystemConfiguration', 'MobileCoreServices', 'CoreMotion', 'Accelerate','AudioToolbox','JavaScriptCore','Security','CoreImage','AudioToolbox','ImageIO','QuartzCore','CoreGraphics','CoreText'
         csj.libraries = 'c++', 'resolv', 'z', 'sqlite3', 'bz2', 'xml2', 'iconv', 'c++abi'

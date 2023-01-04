@@ -9,6 +9,12 @@ target 'EasyAdsSDK_Example' do
   pod 'EasyAdsSDK/GDT', :path => '../'
   pod 'EasyAdsSDK/KS', :path => '../'
   pod 'EasyAdsSDK/BD', :path => '../'
+  
+  pod 'Ads-CN', '4.9.0.6'
+  pod 'BaiduMobAdSDK', '5.101'
+  pod 'GDTMobSDK', '4.14.02'
+  pod 'KSAdSDK', '3.3.36'
+
 #  pod 'SDWebImage'
   pod 'Masonry'
 #  pod 'GDTMobSDK', '~> 4.12.91'

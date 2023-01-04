@@ -19,9 +19,11 @@
 #import "EasyAdLog.h"
 @interface CsjSplashAdapter ()  <BUSplashAdDelegate>
 
-@property (nonatomic, strong) BUSplashAdView *csj_ad;
+@property (nonatomic, strong) BUSplashAd *csj_ad;
 @property (nonatomic, weak) EasyAdSplash *adspot;
 @property (nonatomic, strong) EasyAdSupplier *supplier;
+@property (nonatomic, strong) UIImageView *imgV;
+@property (nonatomic, assign) BOOL isClose;
 
 @end
 
@@ -38,7 +40,8 @@
             CGFloat real_h = _adspot.logoImage.size.height*(real_w/_adspot.logoImage.size.width);
             adFrame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-real_h);
         }
-        _csj_ad = [[BUSplashAdView alloc] initWithSlotID:_supplier.adspotId frame:adFrame];
+        _csj_ad = [[BUSplashAd alloc] initWithSlotID:_supplier.adspotId adSize:adFrame.size];
+
     }
     return self;
 }
@@ -63,69 +66,73 @@
 - (void)deallocAdapter {
     if (self.csj_ad) {
 //        NSLog(@"穿山甲 释放了");
-        [self.csj_ad removeFromSuperview];
+        [self.csj_ad removeSplashView];
         self.csj_ad = nil;
+        [self.imgV removeFromSuperview];
+        self.imgV = nil;
     }
 }
 
 - (void)showAd {
-    [[UIApplication sharedApplication].keyWindow addSubview:_csj_ad];
     [[UIApplication sharedApplication].keyWindow bringSubviewToFront:[_adspot performSelector:@selector(bgImgV)]];
-    
-    _csj_ad.backgroundColor = [UIColor clearColor];
-    _csj_ad.rootViewController = _adspot.viewController;
-    
-    if (_adspot.showLogoRequire) {
-        // 添加Logo
-        CGFloat real_w = [UIScreen mainScreen].bounds.size.width;
-        CGFloat real_h = _adspot.logoImage.size.height*(real_w/_adspot.logoImage.size.width);
-        UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-real_h, real_w, real_h)];
-        imgV.userInteractionEnabled = YES;
-        imgV.image = _adspot.logoImage;
-        if (imgV) {
-            [_csj_ad addSubview:imgV];
-        }
-    }
+        
+    [_csj_ad showSplashViewInRootViewController:[UIApplication sharedApplication].easyAd_getCurrentWindow.rootViewController];
+
 
 }
-// MARK: ======================= BUSplashAdDelegate =======================
-/**
- This method is called when splash ad material loaded successfully.
- */
-- (void)splashAdDidLoad:(BUSplashAdView *)splashAd {
+
+
+
+- (void)splashAdLoadSuccess:(nonnull BUSplashAd *)splashAd {
     [self.adspot reportWithType:EasyAdSdkSupplierRepoSucceeded supplier:_supplier error:nil];
     [self.adspot reportWithType:EasyAdSdkSupplierRepoLoaded supplier:_supplier error:nil];
     if ([self.delegate respondsToSelector:@selector(easyAdUnifiedViewDidLoad)]) {
         [self.delegate easyAdUnifiedViewDidLoad];
     }
-    
-//    [self showAd];
 }
 
-/**
- This method is called when splash ad material failed to load.
- @param error : the reason of error
- */
-- (void)splashAd:(BUSplashAdView *)splashAd didFailWithError:(NSError * _Nullable)error {
+- (void)splashAdRenderSuccess:(nonnull BUSplashAd *)splashAd {
+//    NSLog(@"2222222222");
+    if (_adspot.showLogoRequire) {
+        // 添加Logo
+        NSAssert(_adspot.logoImage != nil, @"showLogoRequire = YES时, 必须设置logoImage");
+        CGFloat real_w = [UIScreen mainScreen].bounds.size.width;
+        CGFloat real_h = _adspot.logoImage.size.height*(real_w/_adspot.logoImage.size.width);
+        _imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-real_h, real_w, real_h)];
+        _imgV.userInteractionEnabled = YES;
+        _imgV.image = _adspot.logoImage;
+        if (_imgV) {
+            [_csj_ad.splashRootViewController.view addSubview:_imgV];
+        }
+    }
+    
+}
+
+
+- (void)splashAdLoadFail:(nonnull BUSplashAd *)splashAd error:(BUAdError * _Nullable)error {
     EAD_LEVEL_INFO_LOG(@"%@",error);
     [self.adspot reportWithType:EasyAdSdkSupplierRepoFaileded supplier:_supplier error:error];
     [self deallocAdapter];
 }
 
-/**
- This method is called when splash ad slot will be showing.
- */
-- (void)splashAdWillVisible:(BUSplashAdView *)splashAd {
+
+- (void)splashAdRenderFail:(nonnull BUSplashAd *)splashAd error:(BUAdError * _Nullable)error {
+    [self.adspot reportWithType:EasyAdSdkSupplierRepoFaileded supplier:_supplier error:error];
+    [self deallocAdapter];
+}
+
+- (void)splashAdWillShow:(nonnull BUSplashAd *)splashAd {
+
+}
+
+- (void)splashAdDidShow:(nonnull BUSplashAd *)splashAd {
     [self.adspot reportWithType:EasyAdSdkSupplierRepoImped supplier:_supplier error:nil];
     if ([self.delegate respondsToSelector:@selector(easyAdExposured)] && self.csj_ad) {
         [self.delegate easyAdExposured];
     }
 }
 
-/**
- This method is called when splash ad is clicked.
- */
-- (void)splashAdDidClick:(BUSplashAdView *)splashAd {
+- (void)splashAdDidClick:(nonnull BUSplashAd *)splashAd {
     [self deallocAdapter];
     [self.adspot reportWithType:EasyAdSdkSupplierRepoClicked supplier:_supplier error:nil];
     if ([self.delegate respondsToSelector:@selector(easyAdClicked)]) {
@@ -133,40 +140,36 @@
     }
 }
 
-/**
- This method is called when splash ad is closed.
- */
-- (void)splashAdDidClose:(BUSplashAdView *)splashAd {
-    [_csj_ad removeFromSuperview];
+- (void)splashAdDidClose:(nonnull BUSplashAd *)splashAd closeType:(BUSplashAdCloseType)closeType {
+        
+    [self closeDelegate];
+}
+
+- (void)splashAdViewControllerDidClose:(BUSplashAd *)splashAd {
+    [self closeDelegate];
+}
+
+- (void)splashDidCloseOtherController:(nonnull BUSplashAd *)splashAd interactionType:(BUInteractionType)interactionType {
+    [self closeDelegate];
+}
+
+- (void)splashVideoAdDidPlayFinish:(nonnull BUSplashAd *)splashAd didFailWithError:(nonnull NSError *)error {
+    
+}
+
+- (void)closeDelegate {
+    if (_isClose) {
+        return;
+    }
+    _isClose = YES;
     if ([self.delegate respondsToSelector:@selector(easyAdDidClose)]) {
         [self.delegate easyAdDidClose];
     }
-//    _csj_ad = nil;
+    [self deallocAdapter];
+
 }
 
-/**
- This method is called when spalashAd skip button  is clicked.
- */
-- (void)splashAdDidClickSkip:(BUSplashAdView *)splashAd {
-    [self deallocAdapter];
-    if ([self.delegate respondsToSelector:@selector(easyAdSplashOnAdSkipClicked)]) {
-        [self.delegate easyAdSplashOnAdSkipClicked];
-    }
-}
 
-/**
- This method is called when spalashAd countdown equals to zero
- */
-- (void)splashAdCountdownToZero:(BUSplashAdView *)splashAd {
-    [self deallocAdapter];
-    if ([self.delegate respondsToSelector:@selector(easyAdSplashOnAdCountdownToZero)]) {
-        [self.delegate easyAdSplashOnAdCountdownToZero];
-    }
-}
-
-- (void)splashAdDidCloseOtherController:(BUSplashAdView *)splashAd interactionType:(BUInteractionType)interactionType {
-    [self deallocAdapter];
-}
 
 
 

@@ -28,6 +28,7 @@
 // 是否点击了
 @property (nonatomic, assign) BOOL isClick;
 @property (nonatomic, strong) KSSplashAdView *ks_ad;
+@property (nonatomic, strong) UIImageView *imgV;
 
 
 @end
@@ -55,7 +56,6 @@
     }
 
     _ks_ad.delegate = self;
-    _ks_ad.needShowMiniWindow = NO;
     _ks_ad.rootViewController = _adspot.viewController;
     _ks_ad.timeoutInterval = timeout;
     [_ks_ad loadAdData];
@@ -71,6 +71,8 @@
     if (self.ks_ad) {
         [self.ks_ad removeFromSuperview];
         self.ks_ad = nil;
+        [self.imgV removeFromSuperview];
+        self.imgV = nil;
     }
 }
 
@@ -79,11 +81,6 @@
  * splash ad request done
  */
 - (void)ksad_splashAdDidLoad:(KSSplashAdView *)splashAdView {
-    [self.adspot reportWithType:EasyAdSdkSupplierRepoSucceeded supplier:_supplier error:nil];
-    [self.adspot reportWithType:EasyAdSdkSupplierRepoLoaded supplier:_supplier error:nil];
-    if ([self.delegate respondsToSelector:@selector(easyAdUnifiedViewDidLoad)]) {
-        [self.delegate easyAdUnifiedViewDidLoad];
-    }
 //    [self showAd];
 
 }
@@ -91,7 +88,11 @@
  * splash ad material load, ready to display
  */
 - (void)ksad_splashAdContentDidLoad:(KSSplashAdView *)splashAdView {
-    
+    if ([self.delegate respondsToSelector:@selector(easyAdUnifiedViewDidLoad)]) {
+        [self.delegate easyAdUnifiedViewDidLoad];
+    }
+    [self.adspot reportWithType:EasyAdSdkSupplierRepoSucceeded supplier:_supplier error:nil];
+    [self.adspot reportWithType:EasyAdSdkSupplierRepoLoaded supplier:_supplier error:nil];
 }
 /**
  * splash ad (material) failed to load
@@ -105,10 +106,10 @@
  * splash ad did visible
  */
 - (void)ksad_splashAdDidVisible:(KSSplashAdView *)splashAdView {
-    [self.adspot reportWithType:EasyAdSdkSupplierRepoImped supplier:_supplier error:nil];
     if ([self.delegate respondsToSelector:@selector(easyAdExposured)]) {
         [self.delegate easyAdExposured];
     }
+    [self.adspot reportWithType:EasyAdSdkSupplierRepoImped supplier:_supplier error:nil];
 }
 /**
  * splash ad video begin play
@@ -126,6 +127,8 @@
     if ([self.delegate respondsToSelector:@selector(easyAdClicked)]) {
         [self.delegate easyAdClicked];
     }
+    [_imgV removeFromSuperview];
+    _imgV = nil;
 }
 /**
  * splash ad will zoom out, frame can be assigned
@@ -243,8 +246,22 @@
     if (!_ks_ad) {
         return;
     }
-    _ks_ad.frame = [UIScreen mainScreen].bounds;
-    [[UIApplication sharedApplication].easyAd_getCurrentWindow addSubview:_ks_ad];
+    // 设置logo
+    CGRect adFrame = [UIScreen mainScreen].bounds;
+    if (_adspot.logoImage && _adspot.showLogoRequire) {
+        
+        NSAssert(_adspot.logoImage != nil, @"showLogoRequire = YES时, 必须设置logoImage");
+        CGFloat real_w = [UIScreen mainScreen].bounds.size.width;
+        CGFloat real_h = _adspot.logoImage.size.height*(real_w/_adspot.logoImage.size.width);
+        adFrame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-real_h);
+        
+        self.imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-real_h, real_w, real_h)];
+        self.imgV.userInteractionEnabled = YES;
+        self.imgV.image = _adspot.logoImage;
+        [[UIApplication sharedApplication].easyAd_getCurrentWindow addSubview:self.imgV];
+    }
+    _ks_ad.frame = adFrame;
+    [_ks_ad showInView:[UIApplication sharedApplication].easyAd_getCurrentWindow];
 }
 
 //- (void)ksad_splashAdDismiss:(BOOL)converted {

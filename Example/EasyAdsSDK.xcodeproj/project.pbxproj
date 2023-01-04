@@ -582,14 +582,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-EasyAdsSDK_Example/Pods-EasyAdsSDK_Example-resources.sh",
-				"${PODS_ROOT}/Ads-CN/PangleSDK/LICENSE",
-				"${PODS_ROOT}/Ads-CN/PangleSDK/BUAdSDK.bundle",
+				"${PODS_ROOT}/Ads-CN/SDK/LICENSE",
+				"${PODS_ROOT}/Ads-CN/SDK/CSJAdSDK.bundle",
 				"${PODS_ROOT}/BaiduMobAdSDK/baidumobadsdk.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LICENSE",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/BUAdSDK.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CSJAdSDK.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/baidumobadsdk.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

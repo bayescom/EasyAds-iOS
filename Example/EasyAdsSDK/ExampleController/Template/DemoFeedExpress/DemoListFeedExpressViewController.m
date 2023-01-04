@@ -236,6 +236,7 @@
         return ((BYExamCellModelElement *)_dataArrM[indexPath.row]).cellh;
     } else {
         CGFloat height = ([_dataArrM[indexPath.row] expressView]).frame.size.height;
+        NSLog(@"=======> %f", height);
         return height;
     }
 }
@@ -259,9 +260,9 @@
         view.tag = 1000;
         [cell.contentView addSubview:view];
         cell.accessibilityIdentifier = @"nativeTemp_ad";
-        [view mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(@0);
-        }];
+//        [view mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            make.edges.equalTo(@0);
+//        }];
 
         return cell;
     }

@@ -19,7 +19,7 @@
 #import "EasyAdNativeExpress.h"
 #import "EasyAdLog.h"
 #import "EasyAdNativeExpressView.h"
-@interface BdNativeExpressAdapter ()<BaiduMobAdNativeAdDelegate>
+@interface BdNativeExpressAdapter ()<BaiduMobAdNativeAdDelegate, BaiduMobAdNativeInterationDelegate>
 @property (nonatomic, strong) BaiduMobAdNative *bd_ad;
 @property (nonatomic, weak) EasyAdNativeExpress *adspot;
 @property (nonatomic, weak) UIViewController *controller;
@@ -35,9 +35,9 @@
         _adspot = adspot;
         _supplier = supplier;
         _bd_ad = [[BaiduMobAdNative alloc] init];
-        _bd_ad.delegate = self;
+        _bd_ad.adDelegate = self;
         _bd_ad.publisherId = _supplier.appId;
-        _bd_ad.adId = _supplier.adspotId;
+        _bd_ad.adUnitTag = _supplier.adspotId;
         _bd_ad.presentAdViewController = _adspot.viewController;
     }
     return self;
@@ -68,27 +68,29 @@
     } else {
         [_adspot reportWithType:EasyAdSdkSupplierRepoSucceeded supplier:_supplier error:nil];
         NSMutableArray *temp = [NSMutableArray array];
-        for (BaiduMobAdNativeAdObject *object in nativeAds) {
-            if ([object isExpired]) {
-                continue;
-            }
-            // BDview
-            BaiduMobAdSmartFeedView *view = [[BaiduMobAdSmartFeedView alloc]initWithObject:object frame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, CGFLOAT_MIN)];
-            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGesture:)];
-            [view addGestureRecognizer:tapGesture];
+        
+        
+        BaiduMobAdNativeAdObject *object = nativeAds.firstObject;
+        object.interationDelegate = self;
+//        if ([object isExpired]) {
+//            continue;
+//        }
+        // BDview
+        BaiduMobAdSmartFeedView *view = [[BaiduMobAdSmartFeedView alloc]initWithObject:object frame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, CGFLOAT_MIN)];
+//            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGesture:)];
+//            [view addGestureRecognizer:tapGesture];
 
-            [view setVideoMute:YES];
-            
-//            [view handleClick];
-            [view trackImpression];
-            
-            // advanceView
-            EasyAdNativeExpressView *TT = [[EasyAdNativeExpressView alloc] initWithViewController:_adspot.viewController];
-            TT.expressView = view;
-//            TT.identifier = _supplier.identifier;
-            [temp addObject:TT];
+        [view setVideoMute:YES];
+        
+        [view reSize];
+        NSLog(@"=====> %@", view);
 
-        }
+        // advanceView
+        EasyAdNativeExpressView *TT = [[EasyAdNativeExpressView alloc] initWithViewController:_adspot.viewController];
+        TT.expressView = view;
+
+        [temp addObject:TT];
+
         self.views = temp;
         [_adspot reportWithType:EasyAdSdkSupplierRepoLoaded supplier:_supplier error:nil];
 
@@ -121,14 +123,19 @@
     }
 }
 
-//广告详情页被关闭，如果为视频广告，可选择继续播放视频
-- (void)didDismissLandingPage:(UIView *)nativeAdView {
-//    NSLog(@"信息流落地页被关闭");
-//    if ([_delegate respondsToSelector:@selector(easyAdNativeExpressOnAdClosed:)]) {
-//        [_delegate easyAdNativeExpressOnAdClosed:nativeAdView];
-//    }
+// 负反馈点击选项回调
+- (void)nativeAdDislikeClick:(UIView *)adView reason:(BaiduMobAdDislikeReasonType)reason {
+//    NSLog(@"native: smart feedback click 智选负反馈点击：%@ reason:%ld", adView, (long)reason);
+    EasyAdNativeExpressView *expressView = [self returnExpressViewWithAdView:adView];
 
+    if (expressView) {
+        if ([_delegate respondsToSelector:@selector(easyAdNativeExpressOnAdClosed:)]) {
+            [_delegate easyAdNativeExpressOnAdClosed:expressView];
+        }
+        [self.views removeObject:expressView];
+    }
 }
+
 
 //广告曝光成功
 - (void)nativeAdExposure:(UIView *)nativeAdView nativeAdDataObject:(BaiduMobAdNativeAdObject *)object {
@@ -162,6 +169,19 @@
         }
         [self.views removeObject:expressView];
     }
+
+}
+
+// 广告关闭
+- (void)nativeAdDislikeClose:(UIView *)adView {
+//    EasyAdNativeExpressView *expressView = [self returnExpressViewWithAdView:adView];
+//
+//    if (expressView) {
+//        if ([_delegate respondsToSelector:@selector(easyAdNativeExpressOnAdClosed:)]) {
+//            [_delegate easyAdNativeExpressOnAdClosed:expressView];
+//        }
+//        [self.views removeObject:expressView];
+//    }
 
 }
 

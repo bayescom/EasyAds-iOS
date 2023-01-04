@@ -1,51 +1,88 @@
 PODS:
-  - Ads-CN (4.0.0.5):
-    - Ads-CN/BUAdSDK (= 4.0.0.5)
-  - Ads-CN/BUAdSDK (4.0.0.5):
-    - Ads-CN/BUFoundation
-    - Ads-CN/Domestic
-  - Ads-CN/BUFoundation (4.0.0.5)
-  - Ads-CN/Domestic (4.0.0.5)
-  - BaiduMobAdSDK (4.83)
-  - EasyAdsSDK (1.0.0):
-    - EasyAdsSDK/Core (= 1.0.0)
-  - EasyAdsSDK/Adspot (1.0.0):
+  - Ads-CN (4.9.0.6):
+    - Ads-CN/BUAdSDK (= 4.9.0.6)
+  - Ads-CN/BUAdSDK (4.9.0.6):
+    - Ads-CN/Dep_Accurate
+  - Ads-CN/Dep_Accurate (4.9.0.6):
+    - BUAdSDK (= 0.1.0.24)
+    - BURelyFoundation/CSJ (= 0.0.3.19)
+  - BaiduMobAdSDK (5.101)
+  - BUAdSDK (0.1.0.24):
+    - BUAdSDK/BUAdSDK (= 0.1.0.24)
+  - BUAdSDK/BUAdSDK (0.1.0.24)
+  - BURelyFoundation/AFNetworking (0.0.3.19)
+  - BURelyFoundation/BURelyFoundation (0.0.3.19)
+  - BURelyFoundation/CSJ (0.0.3.19):
+    - BURelyFoundation/AFNetworking
+    - BURelyFoundation/BURelyFoundation
+    - BURelyFoundation/Foundation
+    - BURelyFoundation/Gecko
+    - BURelyFoundation/HM
+    - BURelyFoundation/NETWork
+    - BURelyFoundation/SDWebImage
+    - BURelyFoundation/YYModel
+    - BURelyFoundation/ZFPlayer
+    - BURelyFoundation/Zip
+  - BURelyFoundation/Foundation (0.0.3.19):
+    - BURelyFoundation/NETWork
+  - BURelyFoundation/Gecko (0.0.3.19):
+    - BURelyFoundation/Foundation
+  - BURelyFoundation/HM (0.0.3.19)
+  - BURelyFoundation/NETWork (0.0.3.19):
+    - BURelyFoundation/AFNetworking
+  - BURelyFoundation/SDWebImage (0.0.3.19):
+    - BURelyFoundation/Foundation
+  - BURelyFoundation/YYModel (0.0.3.19)
+  - BURelyFoundation/ZFPlayer (0.0.3.19):
+    - BURelyFoundation/Foundation
+    - BURelyFoundation/Zip
+  - BURelyFoundation/Zip (0.0.3.19):
+    - BURelyFoundation/Foundation
+  - EasyAdsSDK (1.0.2):
+    - EasyAdsSDK/Core (= 1.0.2)
+  - EasyAdsSDK/Adspot (1.0.2):
     - EasyAdsSDK/Core
-  - EasyAdsSDK/BD (1.0.0):
+  - EasyAdsSDK/BD (1.0.2):
     - BaiduMobAdSDK
     - EasyAdsSDK/Adspot
     - EasyAdsSDK/Core
-  - EasyAdsSDK/Core (1.0.0)
-  - EasyAdsSDK/CSJ (1.0.0):
+  - EasyAdsSDK/Core (1.0.2)
+  - EasyAdsSDK/CSJ (1.0.2):
     - Ads-CN
     - EasyAdsSDK/Adspot
     - EasyAdsSDK/Core
-  - EasyAdsSDK/GDT (1.0.0):
+  - EasyAdsSDK/GDT (1.0.2):
     - EasyAdsSDK/Adspot
     - EasyAdsSDK/Core
     - GDTMobSDK
-  - EasyAdsSDK/KS (1.0.0):
+  - EasyAdsSDK/KS (1.0.2):
     - EasyAdsSDK/Adspot
     - EasyAdsSDK/Core
     - KSAdSDK
-  - GDTMobSDK (4.13.22):
-    - GDTMobSDK/GDTMobSDK (= 4.13.22)
-  - GDTMobSDK/GDTMobSDK (4.13.22)
-  - KSAdSDK (3.3.16)
+  - GDTMobSDK (4.14.02):
+    - GDTMobSDK/GDTMobSDK (= 4.14.02)
+  - GDTMobSDK/GDTMobSDK (4.14.02)
+  - KSAdSDK (3.3.36)
   - Masonry (1.1.0)
 
 DEPENDENCIES:
+  - Ads-CN (= 4.9.0.6)
+  - BaiduMobAdSDK (= 5.101)
   - EasyAdsSDK (from `../`)
   - EasyAdsSDK/BD (from `../`)
   - EasyAdsSDK/CSJ (from `../`)
   - EasyAdsSDK/GDT (from `../`)
   - EasyAdsSDK/KS (from `../`)
+  - GDTMobSDK (= 4.14.02)
+  - KSAdSDK (= 3.3.36)
   - Masonry
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Ads-CN
     - BaiduMobAdSDK
+    - BUAdSDK
+    - BURelyFoundation
     - GDTMobSDK
     - KSAdSDK
     - Masonry
@@ -55,13 +92,15 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Ads-CN: 85c20c8e557b01f30bd0e1cb68244b90b061a8d5
-  BaiduMobAdSDK: d3006333637dacac0ef9808655a686e18019f033
-  EasyAdsSDK: d67d28ebee41f9c6359e3b7a4a436046ea7aa890
-  GDTMobSDK: 3d36a2c7c606b1e5255442fcd609b09f322ca016
-  KSAdSDK: 21a9cac9f2b9d81dc38eca078950d006775e83ff
+  Ads-CN: af14052d0c6dc1b7a80cf4eccabfb9ce5e7edc7e
+  BaiduMobAdSDK: b6256b85b452708720c0f435ac8c2d88ab5134d5
+  BUAdSDK: 5528f72f7b9b478a12743ea23af7bdb9746efc00
+  BURelyFoundation: c97aafe4c63e92bd54714fde509a60fa2d705e24
+  EasyAdsSDK: a7ea1fcff73fc64f5dbde183d457be62bb079287
+  GDTMobSDK: d1f45f95df9df74ba0253ae9e1036a5f30d23c4c
+  KSAdSDK: 8f34d25c6a1fa26d9d2e913d87b7bffe4a38b6f5
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
-PODFILE CHECKSUM: 96f7ac967f50c1077af770e58fb671f86df513d8
+PODFILE CHECKSUM: 622f807524bfc9e1b2b63a9d3509be5aab1cd9ca
 
 COCOAPODS: 1.11.2
